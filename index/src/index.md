@@ -4,7 +4,7 @@ title: "Presentation Framework"
 
 # 🎯 Presentations
 
-📖 **[Full documentation & README](https://github.com/adufou/pres-framework#readme)**
+📖 **[Full Documentation & README](/readme)**
 
 ---
 

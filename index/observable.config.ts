@@ -5,8 +5,13 @@ export default defineConfig({
   pages: [
     {
       name: "index",
-      path: "/index",
+      path: "/",
       input: "src/index.md",
+    },
+    {
+      name: "readme",
+      path: "/readme",
+      input: "src/readme.md",
     },
   ],
   root: "/",
