@@ -1,0 +1,19 @@
+{
+  "name": "pres-framework",
+  "version": "1.0.0",
+  "description": "Observable Framework presentation system with pnpm workspaces",
+  "type": "module",
+  "scripts": {
+    "dev:index": "pnpm --filter index dev",
+    "dev:hello-world": "pnpm --filter hello-world dev",
+    "build:all": "bash ./scripts/build-for-pages.sh",
+    "preview": "pnpm build:all && npx http-server ./dist -p 8080 -o",
+    "deploy": "pnpm build:all && gh-pages -d dist"
+  },
+  "devDependencies": {
+    "@observablehq/framework": "latest",
+    "@observablehq/plot": "latest",
+    "typescript": "^5.0.0",
+    "gh-pages": "^6.0.0"
+  }
+}

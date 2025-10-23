@@ -1,0 +1,79 @@
+/* Shared theme for all presentations */
+
+:root {
+  /* Colors */
+  --primary: #4a90e2;
+  --primary-dark: #2e5c8a;
+  --accent: #f39c12;
+  --background: #ffffff;
+  --surface: #f8f9fa;
+  --text: #1a1a1a;
+  --text-light: #666666;
+  --border: #e0e0e0;
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+
+  /* Typography */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --font-mono: 'Menlo', 'Monaco', 'Courier New', monospace;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text);
+  background-color: var(--background);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text);
+  font-weight: 600;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+code {
+  font-family: var(--font-mono);
+  background-color: var(--surface);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+pre {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: var(--spacing-md);
+  overflow-x: auto;
+}
+
+blockquote {
+  border-left: 4px solid var(--primary);
+  padding-left: var(--spacing-md);
+  margin-left: 0;
+  color: var(--text-light);
+}
+
+/* Observable Framework overrides */
+.observablehq {
+  font-family: var(--font-sans);
+}
+
+.observablehq pre {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+}
