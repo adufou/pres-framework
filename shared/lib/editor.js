@@ -1,12 +1,12 @@
 // Adapted from @cmudig/editor for Observable Framework
 // Original: https://observablehq.com/@cmudig/editor
 
-export async function createEditor() {
-  // Load dependencies
-  const CodeJar = (await import('https://cdn.jsdelivr.net/npm/codejar@3.3.0/codejar.min.js')).CodeJar;
-  const withLineNumbers = (await import('https://bundle.run/codejar@3.3.0/linenumbers.js')).withLineNumbers;
-  const highlightjs = (await import('https://jspm.dev/highlight.js@10.7.1')).default;
-  const debounce = (await import('https://cdn.skypack.dev/lodash.debounce@4.0.8')).default;
+import { CodeJar, withLineNumbers } from 'codejar';
+import hljs from 'highlight.js';
+import debounce from 'lodash.debounce';
+
+export const createEditor = () => {
+  const highlightjs = hljs;
 
   const defaultStyles = `
     border: 1px solid #eee;
@@ -38,7 +38,7 @@ export async function createEditor() {
     highlightjs.highlightElement(editor);
   }
 
-  function Editor(opt = {}) {
+  return function Editor(opt = {}) {
     const {
       language = 'plaintext',
       styles = defaultStyles,
@@ -177,7 +177,5 @@ export async function createEditor() {
     });
 
     return container;
-  }
-
-  return { Editor };
-}
+  };
+};

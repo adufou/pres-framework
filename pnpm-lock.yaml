@@ -26,6 +26,15 @@ importers:
       '@observablehq/framework':
         specifier: ^1.13.3
         version: 1.13.3(@types/markdown-it@14.1.2)
+      codejar:
+        specifier: ^3.3.0
+        version: 3.7.0
+      highlight.js:
+        specifier: ^10.7.1
+        version: 10.7.3
+      lodash.debounce:
+        specifier: ^4.0.8
+        version: 4.0.8
 
   presentations/hello-world:
     devDependencies:
@@ -38,6 +47,15 @@ importers:
       '@observablehq/plot':
         specifier: ^0.6.17
         version: 0.6.17
+      codejar:
+        specifier: ^3.3.0
+        version: 3.7.0
+      highlight.js:
+        specifier: ^10.7.1
+        version: 10.7.3
+      lodash.debounce:
+        specifier: ^4.0.8
+        version: 4.0.8
 
 packages:
 
@@ -690,6 +708,9 @@ packages:
     resolution: {integrity: sha512-Wdy2Igu8OcBpI2pZePZ5oWjPC38tmDVx5WKUXKwlLYkA0ozo85sLsLvkBbBn/sZaSCMFOGZJ14fvW9t5/d7kdA==}
     engines: {node: '>=8'}
 
+  codejar@3.7.0:
+    resolution: {integrity: sha512-rqyDu2zNwfu1EhXI++LEMQDzhykS+V0BV52RemtCj5lczgTgWSufyEa+tS7RP7qCXH/WXOkU0eIthmFUzvG78Q==}
+
   color-convert@2.0.1:
     resolution: {integrity: sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==}
     engines: {node: '>=7.0.0'}
@@ -1141,6 +1162,9 @@ packages:
     resolution: {integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==}
     hasBin: true
 
+  highlight.js@10.7.3:
+    resolution: {integrity: sha512-tzcUFauisWKNHaRkN4Wjl/ZA07gENAjFl3J/c480dprkGTg5EQstgaNFqBfUqCq54kZRIEcreTsAgF/m2quD7A==}
+
   highlight.js@11.11.1:
     resolution: {integrity: sha512-Xwwo44whKBVCYoliBQwaPvtd/2tYFkRQtXDWj1nackaV2JPXx3L0+Jvd8/qCJ2p+ML0/XVkJ2q+Mr+UVdpJK5w==}
     engines: {node: '>=12.0.0'}
@@ -1281,6 +1305,9 @@ packages:
   locate-path@5.0.0:
     resolution: {integrity: sha512-t7hw9pI+WvuwNJXwk5zVHpyhIqzg2qTlklJOf0mVxGSbe3Fp2VieZcduNYjaLDoy6p9uGpQEGWG87WpMKlNq8g==}
     engines: {node: '>=8'}
+
+  lodash.debounce@4.0.8:
+    resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
 
   lru-cache@10.4.3:
     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
@@ -2247,6 +2274,8 @@ snapshots:
 
   ci-info@4.3.1: {}
 
+  codejar@3.7.0: {}
+
   color-convert@2.0.1:
     dependencies:
       color-name: 1.1.4
@@ -2753,6 +2782,8 @@ snapshots:
 
   he@1.2.0: {}
 
+  highlight.js@10.7.3: {}
+
   highlight.js@11.11.1: {}
 
   htl@0.3.1: {}
@@ -2909,6 +2940,8 @@ snapshots:
   locate-path@5.0.0:
     dependencies:
       p-locate: 4.1.0
+
+  lodash.debounce@4.0.8: {}
 
   lru-cache@10.4.3: {}
 

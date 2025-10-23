@@ -14,6 +14,9 @@
   "devDependencies": {
     "@observablehq/framework": "^1.13.3",
     "@observablehq/inputs": "^0.12.0",
-    "@observablehq/plot": "^0.6.17"
+    "@observablehq/plot": "^0.6.17",
+    "codejar": "^3.3.0",
+    "highlight.js": "^10.7.1",
+    "lodash.debounce": "^4.0.8"
   }
 }

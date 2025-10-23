@@ -165,9 +165,9 @@ const multiplier = view(Inputs.range([1, 10], {
 ### Step 3: Edit the Code
 
 ```ts
-import { createEditor } from './lib/editor.js';
+import { createEditor } from '../../shared/lib/editor.js';
 
-const { Editor } = await createEditor();
+const Editor = createEditor();
 
 const userCode = view(Editor({
   language: 'javascript',
