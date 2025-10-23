@@ -4,7 +4,7 @@ export default defineConfig({
   title: "Hello World – TS Demo",
   pages: [
     {
-      name: "hello-world",
+      name: "index",
       path: "/",
       input: "src/hello-world.md",
     },
