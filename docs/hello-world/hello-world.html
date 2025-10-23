@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="generator" content="Observable Framework v1.13.3">
+<title>Hello World – TS Demo</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="preload" as="style" href="./_observablehq/theme-air,near-midnight.dcdbf18e.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="stylesheet" type="text/css" href="./_observablehq/theme-air,near-midnight.dcdbf18e.css">
+<link rel="modulepreload" href="./_observablehq/client.ab247c66.js">
+<link rel="modulepreload" href="./_observablehq/runtime.e080113b.js">
+<link rel="modulepreload" href="./_observablehq/stdlib.eabb1795.js">
+<link rel="modulepreload" href="./_node/@observablehq/plot@0.6.17/index.d66b1832.js">
+<link rel="modulepreload" href="./_npm/htl@0.3.1/72f4716c.js">
+<link rel="modulepreload" href="./_node/d3@7.9.0/index.8946009e.js">
+<link rel="modulepreload" href="./_node/isoformat@0.2.1/index.0882e9d9.js">
+<link rel="modulepreload" href="./_node/interval-tree-1d@1.0.4/index.eeaa354d.js">
+<link rel="modulepreload" href="./_node/d3-array@3.2.4/index.f89e3560.js">
+<link rel="modulepreload" href="./_node/d3-axis@3.0.0/index.34ded868.js">
+<link rel="modulepreload" href="./_node/d3-brush@3.0.0/index.76e53644.js">
+<link rel="modulepreload" href="./_node/d3-chord@3.0.1/index.eb7a3f59.js">
+<link rel="modulepreload" href="./_node/d3-color@3.1.0/index.e8c126ff.js">
+<link rel="modulepreload" href="./_node/d3-contour@4.0.2/index.dec5b7e9.js">
+<link rel="modulepreload" href="./_node/d3-delaunay@6.0.4/index.1771ba9f.js">
+<link rel="modulepreload" href="./_node/d3-dispatch@3.0.1/index.be49ca5f.js">
+<link rel="modulepreload" href="./_node/d3-drag@3.0.0/index.d3ae5f0f.js">
+<link rel="modulepreload" href="./_node/d3-dsv@3.0.1/index.48418e2e.js">
+<link rel="modulepreload" href="./_node/d3-ease@3.0.1/index.09153f73.js">
+<link rel="modulepreload" href="./_node/d3-fetch@3.0.1/index.2c1c499d.js">
+<link rel="modulepreload" href="./_node/d3-force@3.0.0/index.952bd793.js">
+<link rel="modulepreload" href="./_node/d3-format@3.1.0/index.da30fb93.js">
+<link rel="modulepreload" href="./_node/d3-geo@3.1.1/index.75f0ca91.js">
+<link rel="modulepreload" href="./_node/d3-hierarchy@3.1.2/index.0a013d9a.js">
+<link rel="modulepreload" href="./_node/d3-interpolate@3.0.1/index.7ed7c7fe.js">
+<link rel="modulepreload" href="./_node/d3-path@3.1.0/index.c2b3c473.js">
+<link rel="modulepreload" href="./_node/d3-polygon@3.0.1/index.32c3d834.js">
+<link rel="modulepreload" href="./_node/d3-quadtree@3.0.1/index.e9fed2eb.js">
+<link rel="modulepreload" href="./_node/d3-random@3.0.1/index.fd2cc361.js">
+<link rel="modulepreload" href="./_node/d3-scale@4.0.2/index.0574410e.js">
+<link rel="modulepreload" href="./_node/d3-scale-chromatic@3.1.0/index.7961cbed.js">
+<link rel="modulepreload" href="./_node/d3-selection@3.0.0/index.13204b25.js">
+<link rel="modulepreload" href="./_node/d3-shape@3.2.0/index.b551bc1c.js">
+<link rel="modulepreload" href="./_node/d3-time@3.1.0/index.8fcc123e.js">
+<link rel="modulepreload" href="./_node/d3-time-format@4.1.0/index.08e7c36a.js">
+<link rel="modulepreload" href="./_node/d3-timer@3.0.1/index.0ee6092b.js">
+<link rel="modulepreload" href="./_node/d3-transition@3.0.1/index.d140d658.js">
+<link rel="modulepreload" href="./_node/d3-zoom@3.0.0/index.78e4486d.js">
+<link rel="modulepreload" href="./_node/binary-search-bounds@2.0.5/index.990a1c6d.js">
+<link rel="modulepreload" href="./_node/internmap@2.0.3/index.4106013c.js">
+<link rel="modulepreload" href="./_node/delaunator@5.0.1/index.70ae1478.js">
+<link rel="modulepreload" href="./_node/robust-predicates@3.0.2/index.bdc459cc.js">
+<script type="module">
+
+import {define} from "./_observablehq/client.ab247c66.js";
+
+define({id: "0fed264c", inputs: ["display"], outputs: ["greet"], body: (display) => {
+const greet = (name) => `Hello, ${name}!`;
+display(greet("Observable Framework"));
+return {greet};
+}});
+
+define({id: "a83913e1", inputs: ["display"], outputs: ["Plot","data"], body: async (display) => {
+const Plot = await import("./_node/@observablehq/plot@0.6.17/index.d66b1832.js");
+const data = [
+  { category: "A", value: 10, label: "Category A" },
+  { category: "B", value: 24, label: "Category B" },
+  { category: "C", value: 36, label: "Category C" },
+  { category: "D", value: 18, label: "Category D" },
+  { category: "E", value: 42, label: "Category E" }
+];
+display(
+  Plot.plot({
+    title: "Sample Bar Chart",
+    marginLeft: 60,
+    x: { label: "Categories" },
+    y: { label: "Values" },
+    marks: [
+      Plot.barY(data, { x: "category", y: "value", fill: "#4a90e2" }),
+      Plot.ruleY([0])
+    ]
+  })
+);
+return {Plot,data};
+}});
+
+define({id: "d1f71f60", inputs: ["display"], outputs: ["createDataPoint","point"], body: (display) => {
+const createDataPoint = (name, value) => ({
+  name,
+  value,
+  timestamp: /* @__PURE__ */ new Date()
+});
+const point = createDataPoint("Event", 100);
+display(`Created data point: ${point.name} = ${point.value}`);
+return {createDataPoint,point};
+}});
+
+define({id: "4aae3678", inputs: ["display","html"], outputs: ["count"], body: (display,html) => {
+let count = 0;
+display(
+  html`
+    <div style="padding: 20px; background: #f8f9fa; border-radius: 8px;">
+      <h3>Interactive Counter</h3>
+      <p>Count: <strong>${count}</strong></p>
+      <button onclick="window.location.reload()">Reset</button>
+    </div>
+  `
+);
+return {count};
+}});
+
+define({id: "5c1f85a5", inputs: ["display"], outputs: ["Plot","scatterData"], body: async (display) => {
+const Plot = await import("./_node/@observablehq/plot@0.6.17/index.d66b1832.js");
+const scatterData = Array.from({ length: 50 }, (_, i) => ({
+  x: Math.random() * 100,
+  y: Math.random() * 100,
+  category: Math.random() > 0.5 ? "Group A" : "Group B"
+}));
+display(
+  Plot.plot({
+    title: "Scatter Plot: Two Groups",
+    marginLeft: 60,
+    x: { label: "X Axis" },
+    y: { label: "Y Axis" },
+    color: { legend: true },
+    marks: [
+      Plot.dot(scatterData, {
+        x: "x",
+        y: "y",
+        fill: "category",
+        r: 4
+      })
+    ]
+  })
+);
+return {Plot,scatterData};
+}});
+
+</script>
+</head>
+<body>
+<input id="observablehq-sidebar-toggle" type="checkbox" title="Toggle sidebar">
+<label id="observablehq-sidebar-backdrop" for="observablehq-sidebar-toggle"></label>
+<nav id="observablehq-sidebar">
+  <ol>
+    <label id="observablehq-sidebar-close" for="observablehq-sidebar-toggle"></label>
+    <li class="observablehq-link"><a href="./">Home</a></li>
+  </ol>
+  <ol>
+    <li class="observablehq-link observablehq-link-active"><a href="./hello-world">Hello World – TS Demo</a></li>
+  </ol>
+</nav>
+<script>{const e=document.querySelector("#observablehq-sidebar"),o=document.querySelector("#observablehq-sidebar-toggle"),r=sessionStorage.getItem("observablehq-sidebar");r?o.checked=r==="true":o.indeterminate=!0;for(const t of document.querySelectorAll("#observablehq-sidebar summary")){const s=t.parentElement;switch(sessionStorage.getItem(`observablehq-sidebar:${t.textContent}`)){case"true":s.open=!0;break;case"false":s.classList.contains("observablehq-section-active")||(s.open=!1);break}}addEventListener("beforeunload",()=>sessionStorage.setItem("observablehq-sidebar-scrolly",`${e.scrollTop}`));const a=sessionStorage.getItem("observablehq-sidebar-scrolly");a!=null&&(e.style.cssText="overflow: hidden;",e.scrollTop=+a,e.style.cssText="");}</script>
+<div id="observablehq-center">
+<aside id="observablehq-toc" data-selector="h1:not(:first-of-type)[id], h2:first-child[id], :not(h1) + h2[id]">
+<nav>
+<div>Contents</div>
+<ol>
+<li class="observablehq-secondary-link"><a href="#text-example">Text Example</a></li>
+<li class="observablehq-secondary-link"><a href="#data-visualization-with-plot">📊 Data Visualization with Plot</a></li>
+<li class="observablehq-secondary-link"><a href="#type-script-features">💻 TypeScript Features</a></li>
+<li class="observablehq-secondary-link"><a href="#interactive-elements">🎨 Interactive Elements</a></li>
+<li class="observablehq-secondary-link"><a href="#multiple-visualizations">📈 Multiple Visualizations</a></li>
+<li class="observablehq-secondary-link"><a href="#next-steps">🚀 Next Steps</a></li>
+<li class="observablehq-secondary-link"><a href="#resources">📚 Resources</a></li>
+</ol>
+</nav>
+</aside>
+<main id="observablehq-main" class="observablehq">
+<h1 id="hello-world-observable-framework-type-script" tabindex="-1"><a class="observablehq-header-anchor" href="#hello-world-observable-framework-type-script">🎉 Hello World – Observable Framework + TypeScript</a></h1>
+<p>Welcome to this demonstration of <strong>Observable Framework</strong> with <strong>TypeScript</strong>! This presentation showcases interactive code, visualizations, and the power of combining Markdown with executable TypeScript.</p>
+<hr>
+<h2 id="text-example" tabindex="-1"><a class="observablehq-header-anchor" href="#text-example">Text Example</a></h2>
+<p>Observable Framework presentation demo. You can write Markdown content alongside live, executable code.</p>
+<div class="observablehq observablehq--block"><!--:0fed264c:--></div>
+<hr>
+<h2 id="data-visualization-with-plot" tabindex="-1"><a class="observablehq-header-anchor" href="#data-visualization-with-plot">📊 Data Visualization with Plot</a></h2>
+<p>Let's create a simple bar chart using <strong>Observable Plot</strong>, a declarative visualization library.</p>
+<div class="observablehq observablehq--block"><!--:a83913e1:--></div>
+<hr>
+<h2 id="type-script-features" tabindex="-1"><a class="observablehq-header-anchor" href="#type-script-features">💻 TypeScript Features</a></h2>
+<p>Observable Framework fully supports TypeScript with strict type checking:</p>
+<div class="observablehq observablehq--block"><!--:d1f71f60:--></div>
+<hr>
+<h2 id="interactive-elements" tabindex="-1"><a class="observablehq-header-anchor" href="#interactive-elements">🎨 Interactive Elements</a></h2>
+<p>You can create interactive experiences with Observable:</p>
+<div class="observablehq observablehq--block"><!--:4aae3678:--></div>
+<hr>
+<h2 id="multiple-visualizations" tabindex="-1"><a class="observablehq-header-anchor" href="#multiple-visualizations">📈 Multiple Visualizations</a></h2>
+<p>Here's a scatter plot example with multiple data series:</p>
+<div class="observablehq observablehq--block"><!--:5c1f85a5:--></div>
+<hr>
+<h2 id="next-steps" tabindex="-1"><a class="observablehq-header-anchor" href="#next-steps">🚀 Next Steps</a></h2>
+<ol>
+<li><strong>Edit</strong> this presentation in <code>src/hello-world.md</code></li>
+<li><strong>Add</strong> your own data, visualizations, and interactive elements</li>
+<li><strong>Deploy</strong> to GitHub Pages with <code>pnpm deploy</code></li>
+<li><strong>Create</strong> new presentations in <code>presentations/my-next-pres/</code></li>
+</ol>
+<hr>
+<h2 id="resources" tabindex="-1"><a class="observablehq-header-anchor" href="#resources">📚 Resources</a></h2>
+<ul>
+<li><a href="https://observablehq.com/framework" target="_blank" rel="noopener noreferrer">Observable Framework Documentation</a></li>
+<li><a href="https://observablehq.com/plot" target="_blank" rel="noopener noreferrer">Observable Plot Gallery</a></li>
+<li><a href="https://www.typescriptlang.org/docs/" target="_blank" rel="noopener noreferrer">TypeScript Handbook</a></li>
+</ul>
+<hr>
+<p>Made with ❤️ using Observable Framework, TypeScript, and pnpm</p>
+</main>
+<footer id="observablehq-footer">
+<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2025-10-23T14:55:10">Oct 23, 2025</a>.</div>
+</footer>
+</div>
+</body>
+</html>

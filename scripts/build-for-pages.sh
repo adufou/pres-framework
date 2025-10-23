@@ -1,20 +1,20 @@
 #!/bin/bash
 
 # Build all Observable Framework projects for GitHub Pages deployment
-# This script builds the index project to dist/ and all presentations to dist/<presentation-name>/
+# This script builds the index project to docs/ and all presentations to docs/<presentation-name>/
 
 set -e
 
 echo "🔨 Building all presentations for GitHub Pages..."
 
-# Create root dist directory
-mkdir -p dist
+# Create root docs directory
+mkdir -p docs
 
-# Build index project to root dist
+# Build index project to root docs
 echo "📍 Building index..."
 cd index
 pnpm build
-cp -r dist/* ../dist/
+cp -r dist/* ../docs/
 cd ..
 
 # Build each presentation to subdirectory
@@ -23,11 +23,11 @@ for pres_dir in presentations/*/; do
     echo "📍 Building presentation: $pres_name..."
     cd "$pres_dir"
     pnpm build
-    mkdir -p "../../dist/$pres_name"
-    cp -r dist/* "../../dist/$pres_name/"
+    mkdir -p "../../docs/$pres_name"
+    cp -r dist/* "../../docs/$pres_name/"
     cd ../..
 done
 
-echo "✅ Build complete! All projects ready in dist/"
-echo "📂 dist/"
-ls -la dist/
+echo "✅ Build complete! All projects ready in docs/"
+echo "📂 docs/"
+ls -la docs/
