@@ -15,7 +15,11 @@
 <link rel="modulepreload" href="./_observablehq/stdlib.eabb1795.js">
 <link rel="modulepreload" href="./_node/@observablehq/plot@0.6.17/index.d66b1832.js">
 <link rel="modulepreload" href="./_node/@observablehq/inputs@0.12.0/index.4eed0a6e.js">
+<link rel="modulepreload" href="./_import/lib/editor.18092238.js">
 <link rel="modulepreload" href="./_npm/htl@0.3.1/72f4716c.js">
+<link rel="modulepreload" href="./_node/codejar@3.7.0/index.356d966d.js">
+<link rel="modulepreload" href="./_node/highlight.js@10.7.3/index.3de74535.js">
+<link rel="modulepreload" href="./_node/lodash.debounce@4.0.8/index.35efac82.js">
 <link rel="modulepreload" href="./_node/d3@7.9.0/index.8946009e.js">
 <link rel="modulepreload" href="./_node/isoformat@0.2.1/index.0882e9d9.js">
 <link rel="modulepreload" href="./_node/interval-tree-1d@1.0.4/index.eeaa354d.js">
@@ -160,6 +164,21 @@ const multiplier = view(Inputs.range([1, 10], {
 return {Inputs,multiplier};
 }});
 
+define({id: "ca955fae", inputs: ["view"], outputs: ["createEditor","Editor","userCode"], body: async (view) => {
+const {createEditor} = await import("./_import/lib/editor.18092238.js");
+const Editor = createEditor();
+const userCode = view(Editor({
+  language: "javascript",
+  lineNumbers: true,
+  instant: true,
+  value: `// You can use 'userName' and 'multiplier' from above!
+const greeting = \`Hello, \${userName}!\`;
+const result = 5 * multiplier;
+display(\`\${greeting} Your result: \${result}\`);`
+}));
+return {createEditor,Editor,userCode};
+}});
+
 define({id: "e94fa554", inputs: ["display","html","userName","multiplier","userCode"], body: (display,html,userName,multiplier,userCode) => {
 display(html`<strong>Inputs available to your code:</strong>`);
 display(html`<ul>
@@ -245,9 +264,7 @@ try {
 <h3 id="step-2-choose-a-multiplier" tabindex="-1"><a class="observablehq-header-anchor" href="#step-2-choose-a-multiplier">Step 2: Choose a Multiplier</a></h3>
 <div class="observablehq observablehq--block"><!--:347e5154:--></div>
 <h3 id="step-3-edit-the-code" tabindex="-1"><a class="observablehq-header-anchor" href="#step-3-edit-the-code">Step 3: Edit the Code</a></h3>
-<div class="observablehq observablehq--block">
-  <div class="observablehq--inspect observablehq--error">SyntaxError: non-local import: ../../shared/lib/editor.js (1:0)</div>
-</div>
+<div class="observablehq observablehq--block"><!--:ca955fae:--></div>
 <h3 id="step-4-see-the-output" tabindex="-1"><a class="observablehq-header-anchor" href="#step-4-see-the-output">Step 4: See the Output</a></h3>
 <div class="observablehq observablehq--block"><!--:e94fa554:--></div>
 <h3 id="how-the-reactive-flow-works" tabindex="-1"><a class="observablehq-header-anchor" href="#how-the-reactive-flow-works">How the Reactive Flow Works:</a></h3>
@@ -277,7 +294,7 @@ try {
 <p>Made with ❤️ using Observable Framework, TypeScript, and pnpm</p>
 </main>
 <footer id="observablehq-footer">
-<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2025-10-23T15:09:22">Oct 23, 2025</a>.</div>
+<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2025-10-23T15:13:31">Oct 23, 2025</a>.</div>
 </footer>
 </div>
 </body>
