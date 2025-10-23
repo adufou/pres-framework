@@ -11,7 +11,7 @@ export const createEditor = () => {
 
   const defaultStyles = `
     border: 1px solid #eee;
-    background: #fafafa;
+    background: #f0f0f0;
     font-family: Menlo,Consolas,monospace;
     font-size: 13px;
     padding: 10px;
