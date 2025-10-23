@@ -165,15 +165,18 @@ const multiplier = view(Inputs.range([1, 10], {
 ### Step 3: Edit the Code
 
 ```ts
-import * as Inputs from "@observablehq/inputs";
+import { createEditor } from './lib/editor.js';
 
-const userCode = view(Inputs.textarea({
-  label: "✏️ Edit and Execute Code (Shift+Enter):",
+const { Editor } = await createEditor();
+
+const userCode = view(Editor({
+  language: 'javascript',
+  lineNumbers: true,
+  instant: true,
   value: `// You can use 'userName' and 'multiplier' from above!
 const greeting = \`Hello, \${userName}!\`;
 const result = 5 * multiplier;
-display(\`\${greeting} Your result: \${result}\`);`,
-  rows: 8
+display(\`\${greeting} Your result: \${result}\`);`
 }))
 ```
 
