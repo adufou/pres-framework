@@ -134,6 +134,100 @@ display(
 
 ---
 
+## ⚡ Interactive Code Editor with Reactive Flow
+
+Try the **top-down reactive pattern** — change the inputs below, edit the code in the middle, and see the output update automatically!
+
+### Step 1: Inputs (at the top)
+
+```ts
+import * as Inputs from "@observablehq/inputs";
+
+viewof userName = Inputs.text({
+  label: "👤 Your Name:",
+  value: "Observer",
+  placeholder: "Enter your name"
+})
+
+viewof multiplier = Inputs.range([1, 10], {
+  label: "🔢 Number Multiplier:",
+  value: 3,
+  step: 1
+})
+```
+
+### Step 2: Editable Code Block (in the middle)
+
+```ts
+import * as Inputs from "@observablehq/inputs";
+
+viewof userCode = Inputs.textarea({
+  label: "✏️ Edit and Execute Code:",
+  value: `// Edit this code! It can use userName and multiplier from above
+const greeting = \`Hello, \${userName}!\`;
+const calculation = 5 * multiplier;
+const message = \`\${greeting} Your result is: \${calculation}\`;
+display(message);`,
+  rows: 10
+})
+```
+
+### Step 3: Automatic Output (at the bottom)
+
+```ts
+// This cell automatically re-runs when userName, multiplier, or userCode changes
+// It's reactive - the top-down data flow!
+
+let executionOutput = "";
+
+try {
+  // Create a safe execution context with the inputs available
+  const sandbox = {
+    userName,
+    multiplier,
+    display: (result) => {
+      executionOutput = result;
+    }
+  };
+
+  // Execute the user's code with access to inputs
+  const executeFunc = new Function(
+    'userName',
+    'multiplier',
+    'display',
+    userCode
+  );
+  executeFunc(sandbox.userName, sandbox.multiplier, sandbox.display);
+
+  display(
+    html`
+      <div style="padding: 16px; background: #e8f5e9; border-left: 4px solid #4caf50; border-radius: 4px; font-family: monospace;">
+        <strong>✅ Output:</strong>
+        <pre style="margin: 8px 0 0 0; white-space: pre-wrap; word-wrap: break-word;">${executionOutput}</pre>
+      </div>
+    `
+  );
+} catch (error) {
+  display(
+    html`
+      <div style="padding: 16px; background: #ffebee; border-left: 4px solid #f44336; border-radius: 4px; font-family: monospace;">
+        <strong>❌ Error:</strong>
+        <pre style="margin: 8px 0 0 0; color: #c62828; white-space: pre-wrap; word-wrap: break-word;">${error.message}</pre>
+      </div>
+    `
+  );
+}
+```
+
+### How the Reactive Flow Works:
+
+1. **Top** → User inputs (`userName`, `multiplier`) are defined
+2. **Middle** → Editable code block references these inputs
+3. **Bottom** → Output reads from both inputs and code, automatically updates
+4. **Change anything** → The whole page re-evaluates top-to-bottom!
+
+---
+
 ## 🚀 Next Steps
 
 1. **Edit** this presentation in `src/hello-world.md`
