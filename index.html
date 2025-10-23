@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="generator" content="Observable Framework v1.13.3">
+<title>Presentation Framework</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="preload" as="style" href="./_observablehq/theme-air,near-midnight.dcdbf18e.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="stylesheet" type="text/css" href="./_observablehq/theme-air,near-midnight.dcdbf18e.css">
+<link rel="modulepreload" href="./_observablehq/client.40fce3a0.js">
+<link rel="modulepreload" href="./_observablehq/runtime.e080113b.js">
+<link rel="modulepreload" href="./_observablehq/stdlib.eabb1795.js">
+<script type="module">
+
+import "./_observablehq/client.40fce3a0.js";
+
+</script>
+</head>
+<body>
+<div id="observablehq-center">
+<aside id="observablehq-toc" data-selector="h1:not(:first-of-type)[id], h2:first-child[id], :not(h1) + h2[id]">
+<nav>
+<div>Contents</div>
+<ol>
+<li class="observablehq-secondary-link"><a href="#featured-presentations">Featured Presentations</a></li>
+<li class="observablehq-secondary-link"><a href="#quick-start">🚀 Quick Start</a></li>
+<li class="observablehq-secondary-link"><a href="#technologies">📚 Technologies</a></li>
+<li class="observablehq-secondary-link"><a href="#project-structure">📁 Project Structure</a></li>
+<li class="observablehq-secondary-link"><a href="#features">✨ Features</a></li>
+</ol>
+</nav>
+</aside>
+<main id="observablehq-main" class="observablehq">
+<h1 id="observable-framework-presentations" tabindex="-1"><a class="observablehq-header-anchor" href="#observable-framework-presentations">🎯 Observable Framework Presentations</a></h1>
+<p>Welcome to the presentation framework! This is your hub for all presentations built with <strong>Observable Framework</strong>, <strong>TypeScript</strong>, and <strong>pnpm</strong>.</p>
+<h2 id="featured-presentations" tabindex="-1"><a class="observablehq-header-anchor" href="#featured-presentations">Featured Presentations</a></h2>
+<ul>
+<li><strong><a href="./hello-world/">Hello World Demo</a></strong> — A demonstration of Observable Framework capabilities with TypeScript, interactive code, and data visualizations using Observable Plot.</li>
+</ul>
+<hr>
+<h2 id="quick-start" tabindex="-1"><a class="observablehq-header-anchor" href="#quick-start">🚀 Quick Start</a></h2>
+<p>Each presentation is a standalone Observable Framework project in the <code>presentations/</code> folder.</p>
+<h3 id="development" tabindex="-1"><a class="observablehq-header-anchor" href="#development">Development</a></h3>
+<p>To work on a specific presentation:</p>
+<pre data-language="bash"><code class="language-bash">pnpm dev:presentation-name
+</code></pre>
+<p>Then open your browser to the development server (usually <code>http://localhost:3000</code>).</p>
+<h3 id="preview-all" tabindex="-1"><a class="observablehq-header-anchor" href="#preview-all">Preview All</a></h3>
+<p>To preview all presentations together (static build):</p>
+<pre data-language="bash"><code class="language-bash">pnpm preview
+</code></pre>
+<p>This builds all projects and serves them at <code>http://localhost:8080</code>.</p>
+<h3 id="deploy" tabindex="-1"><a class="observablehq-header-anchor" href="#deploy">Deploy</a></h3>
+<p>To deploy to GitHub Pages:</p>
+<pre data-language="bash"><code class="language-bash">pnpm deploy
+</code></pre>
+<hr>
+<h2 id="technologies" tabindex="-1"><a class="observablehq-header-anchor" href="#technologies">📚 Technologies</a></h2>
+<ul>
+<li><strong>Framework</strong>: <a href="https://observablehq.com/framework" target="_blank" rel="noopener noreferrer">Observable Framework</a></li>
+<li><strong>Package Manager</strong>: <a href="https://pnpm.io/" target="_blank" rel="noopener noreferrer">pnpm</a></li>
+<li><strong>Language</strong>: TypeScript</li>
+<li><strong>Visualization</strong>: <a href="https://observablehq.com/plot" target="_blank" rel="noopener noreferrer">Observable Plot</a></li>
+</ul>
+<hr>
+<h2 id="project-structure" tabindex="-1"><a class="observablehq-header-anchor" href="#project-structure">📁 Project Structure</a></h2>
+<pre><code>pres-framework/
+├── index/                     # Landing page (this project)
+├── presentations/
+│   └── hello-world/           # Demo presentation
+├── shared/                    # Shared configs &amp; theme
+├── tsconfig.base.json         # Shared TypeScript config
+└── pnpm-workspace.yaml        # Workspace configuration
+</code></pre>
+<hr>
+<h2 id="features" tabindex="-1"><a class="observablehq-header-anchor" href="#features">✨ Features</a></h2>
+<p>✅ TypeScript support
+✅ pnpm workspaces for efficient dependency management
+✅ Shared theme and configuration
+✅ Individual presentation isolation
+✅ Easy preview and deployment to GitHub Pages</p>
+<hr>
+<p>Made with ❤️ using <a href="https://observablehq.com/framework" target="_blank" rel="noopener noreferrer">Observable Framework</a></p>
+</main>
+<footer id="observablehq-footer">
+<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2025-10-23T14:48:43">Oct 23, 2025</a>.</div>
+</footer>
+</div>
+</body>
+</html>
