@@ -143,11 +143,11 @@ Try the **top-down reactive pattern** — change the inputs below, edit the code
 ```ts
 import * as Inputs from "@observablehq/inputs";
 
-viewof userName = Inputs.text({
+const userName = view(Inputs.text({
   label: "👤 Your Name:",
   value: "Observer",
   placeholder: "Enter your name"
-})
+}))
 ```
 
 ### Step 2: Choose a Multiplier
@@ -155,11 +155,11 @@ viewof userName = Inputs.text({
 ```ts
 import * as Inputs from "@observablehq/inputs";
 
-viewof multiplier = Inputs.range([1, 10], {
+const multiplier = view(Inputs.range([1, 10], {
   label: "🔢 Number Multiplier:",
   value: 3,
   step: 1
-})
+}))
 ```
 
 ### Step 3: Edit the Code
@@ -167,14 +167,14 @@ viewof multiplier = Inputs.range([1, 10], {
 ```ts
 import * as Inputs from "@observablehq/inputs";
 
-viewof userCode = Inputs.textarea({
+const userCode = view(Inputs.textarea({
   label: "✏️ Edit and Execute Code (Shift+Enter):",
   value: `// You can use 'userName' and 'multiplier' from above!
 const greeting = \`Hello, \${userName}!\`;
 const result = 5 * multiplier;
 display(\`\${greeting} Your result: \${result}\`);`,
   rows: 8
-})
+}))
 ```
 
 ### Step 4: See the Output
