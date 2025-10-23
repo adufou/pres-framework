@@ -138,7 +138,7 @@ display(
 
 Try the **top-down reactive pattern** — change the inputs below, edit the code in the middle, and see the output update automatically!
 
-### Step 1: Inputs (at the top)
+### Step 1: Enter Your Name
 
 ```ts
 import * as Inputs from "@observablehq/inputs";
@@ -148,6 +148,12 @@ viewof userName = Inputs.text({
   value: "Observer",
   placeholder: "Enter your name"
 })
+```
+
+### Step 2: Choose a Multiplier
+
+```ts
+import * as Inputs from "@observablehq/inputs";
 
 viewof multiplier = Inputs.range([1, 10], {
   label: "🔢 Number Multiplier:",
@@ -156,75 +162,57 @@ viewof multiplier = Inputs.range([1, 10], {
 })
 ```
 
-### Step 2: Editable Code Block (in the middle)
+### Step 3: Edit the Code
 
 ```ts
 import * as Inputs from "@observablehq/inputs";
 
 viewof userCode = Inputs.textarea({
-  label: "✏️ Edit and Execute Code:",
-  value: `// Edit this code! It can use userName and multiplier from above
+  label: "✏️ Edit and Execute Code (Shift+Enter):",
+  value: `// You can use 'userName' and 'multiplier' from above!
 const greeting = \`Hello, \${userName}!\`;
-const calculation = 5 * multiplier;
-const message = \`\${greeting} Your result is: \${calculation}\`;
-display(message);`,
-  rows: 10
+const result = 5 * multiplier;
+display(\`\${greeting} Your result: \${result}\`);`,
+  rows: 8
 })
 ```
 
-### Step 3: Automatic Output (at the bottom)
+### Step 4: See the Output
 
 ```ts
-// This cell automatically re-runs when userName, multiplier, or userCode changes
-// It's reactive - the top-down data flow!
+// This cell runs automatically when inputs change
+// It demonstrates the reactive flow!
 
-let executionOutput = "";
+display(html`<strong>Inputs available to your code:</strong>`);
+display(html`<ul>
+  <li><code>userName</code> = "${userName}"</li>
+  <li><code>multiplier</code> = ${multiplier}</li>
+</ul>`);
 
 try {
-  // Create a safe execution context with the inputs available
-  const sandbox = {
+  // Execute user code with access to inputs
+  new Function('userName', 'multiplier', 'display', userCode)(
     userName,
     multiplier,
-    display: (result) => {
-      executionOutput = result;
-    }
-  };
-
-  // Execute the user's code with access to inputs
-  const executeFunc = new Function(
-    'userName',
-    'multiplier',
-    'display',
-    userCode
-  );
-  executeFunc(sandbox.userName, sandbox.multiplier, sandbox.display);
-
-  display(
-    html`
-      <div style="padding: 16px; background: #e8f5e9; border-left: 4px solid #4caf50; border-radius: 4px; font-family: monospace;">
-        <strong>✅ Output:</strong>
-        <pre style="margin: 8px 0 0 0; white-space: pre-wrap; word-wrap: break-word;">${executionOutput}</pre>
-      </div>
-    `
+    display
   );
 } catch (error) {
   display(
-    html`
-      <div style="padding: 16px; background: #ffebee; border-left: 4px solid #f44336; border-radius: 4px; font-family: monospace;">
-        <strong>❌ Error:</strong>
-        <pre style="margin: 8px 0 0 0; color: #c62828; white-space: pre-wrap; word-wrap: break-word;">${error.message}</pre>
-      </div>
-    `
+    html`<div style="padding: 12px; background: #ffebee; border-left: 4px solid #f44336; border-radius: 4px;">
+      <strong style="color: #c62828;">❌ Error:</strong>
+      <pre style="margin: 8px 0 0 0; color: #c62828;">${error.message}</pre>
+    </div>`
   );
 }
 ```
 
 ### How the Reactive Flow Works:
 
-1. **Top** → User inputs (`userName`, `multiplier`) are defined
-2. **Middle** → Editable code block references these inputs
-3. **Bottom** → Output reads from both inputs and code, automatically updates
-4. **Change anything** → The whole page re-evaluates top-to-bottom!
+1. **Input 1** → Your name (at top)
+2. **Input 2** → Number multiplier (below)
+3. **Code Editor** → Edit code that uses the inputs
+4. **Output** → Automatically runs your code and displays results
+5. **Change anything** → The entire page re-evaluates from top to bottom!
 
 ---
 
