@@ -20,6 +20,18 @@ import "./_observablehq/client.e9d881c7.js";
 </script>
 </head>
 <body>
+<input id="observablehq-sidebar-toggle" type="checkbox" title="Toggle sidebar">
+<label id="observablehq-sidebar-backdrop" for="observablehq-sidebar-toggle"></label>
+<nav id="observablehq-sidebar">
+  <ol>
+    <label id="observablehq-sidebar-close" for="observablehq-sidebar-toggle"></label>
+    <li class="observablehq-link observablehq-link-active"><a href="./">Home</a></li>
+  </ol>
+  <ol>
+    <li class="observablehq-link"><a href="./readme">Documentation</a></li>
+  </ol>
+</nav>
+<script>{const e=document.querySelector("#observablehq-sidebar"),o=document.querySelector("#observablehq-sidebar-toggle"),r=sessionStorage.getItem("observablehq-sidebar");r?o.checked=r==="true":o.indeterminate=!0;for(const t of document.querySelectorAll("#observablehq-sidebar summary")){const s=t.parentElement;switch(sessionStorage.getItem(`observablehq-sidebar:${t.textContent}`)){case"true":s.open=!0;break;case"false":s.classList.contains("observablehq-section-active")||(s.open=!1);break}}addEventListener("beforeunload",()=>sessionStorage.setItem("observablehq-sidebar-scrolly",`${e.scrollTop}`));const a=sessionStorage.getItem("observablehq-sidebar-scrolly");a!=null&&(e.style.cssText="overflow: hidden;",e.scrollTop=+a,e.style.cssText="");}</script>
 <div id="observablehq-center">
 <aside id="observablehq-toc" data-selector="h1:not(:first-of-type)[id], h2:first-child[id], :not(h1) + h2[id]">
 <nav>
@@ -31,7 +43,7 @@ import "./_observablehq/client.e9d881c7.js";
 </aside>
 <main id="observablehq-main" class="observablehq">
 <h1 id="presentations" tabindex="-1"><a class="observablehq-header-anchor" href="#presentations">🎯 Presentations</a></h1>
-<p>📖 <strong><a href="https://github.com/adufou/pres-framework#readme" target="_blank" rel="noopener noreferrer">Full documentation &amp; README</a></strong></p>
+<p>📖 <strong><a href="./readme">Full Documentation &amp; README</a></strong></p>
 <hr>
 <h2 id="presentations-1" tabindex="-1"><a class="observablehq-header-anchor" href="#presentations-1">Presentations</a></h2>
 <h3 id="featured" tabindex="-1"><a class="observablehq-header-anchor" href="#featured">Featured</a></h3>
@@ -42,7 +54,8 @@ import "./_observablehq/client.e9d881c7.js";
 <p>Made with ❤️ using <a href="https://observablehq.com/framework" target="_blank" rel="noopener noreferrer">Observable Framework</a></p>
 </main>
 <footer id="observablehq-footer">
-<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2025-10-23T13:49:04">Oct 23, 2025</a>.</div>
+<nav><a rel="next" href="./readme"><span>Documentation</span></a></nav>
+<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2025-10-23T13:53:07">Oct 23, 2025</a>.</div>
 </footer>
 </div>
 </body>
