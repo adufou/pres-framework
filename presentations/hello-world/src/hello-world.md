@@ -2,7 +2,7 @@
 title: "Hello World – TS Demo"
 ---
 
-[← Back to Home](../../)
+[← Back to Home](../)
 
 # 🎉 Hello World – Observable Framework + TypeScript
 
