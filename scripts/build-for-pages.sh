@@ -25,6 +25,10 @@ for pres_dir in presentations/*/; do
     pnpm build
     mkdir -p "../../docs/$pres_name"
     cp -r dist/* "../../docs/$pres_name/"
+    # Rename presentation HTML file to index.html for proper routing
+    if [ -f "../../docs/$pres_name/$pres_name.html" ]; then
+        mv "../../docs/$pres_name/$pres_name.html" "../../docs/$pres_name/index.html"
+    fi
     cd ../..
 done
 
