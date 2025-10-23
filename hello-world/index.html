@@ -138,42 +138,26 @@ display(
 return {Plot,scatterData};
 }});
 
-define({id: "88f8aed2", inputs: ["userName","multiplier","userCode","display","html"], outputs: ["executionOutput"], body: (userName,multiplier,userCode,display,html) => {
-let executionOutput = "";
+define({id: "e94fa554", inputs: ["display","html","userName","multiplier","userCode"], body: (display,html,userName,multiplier,userCode) => {
+display(html`<strong>Inputs available to your code:</strong>`);
+display(html`<ul>
+  <li><code>userName</code> = "${userName}"</li>
+  <li><code>multiplier</code> = ${multiplier}</li>
+</ul>`);
 try {
-  const sandbox = {
+  new Function("userName", "multiplier", "display", userCode)(
     userName,
     multiplier,
-    display: (result) => {
-      executionOutput = result;
-    }
-  };
-  const executeFunc = new Function(
-    "userName",
-    "multiplier",
-    "display",
-    userCode
-  );
-  executeFunc(sandbox.userName, sandbox.multiplier, sandbox.display);
-  display(
-    html`
-      <div style="padding: 16px; background: #e8f5e9; border-left: 4px solid #4caf50; border-radius: 4px; font-family: monospace;">
-        <strong>✅ Output:</strong>
-        <pre style="margin: 8px 0 0 0; white-space: pre-wrap; word-wrap: break-word;">${executionOutput}</pre>
-      </div>
-    `
+    display
   );
 } catch (error) {
   display(
-    html`
-      <div style="padding: 16px; background: #ffebee; border-left: 4px solid #f44336; border-radius: 4px; font-family: monospace;">
-        <strong>❌ Error:</strong>
-        <pre style="margin: 8px 0 0 0; color: #c62828; white-space: pre-wrap; word-wrap: break-word;">${error.message}</pre>
-      </div>
-    `
+    html`<div style="padding: 12px; background: #ffebee; border-left: 4px solid #f44336; border-radius: 4px;">
+      <strong style="color: #c62828;">❌ Error:</strong>
+      <pre style="margin: 8px 0 0 0; color: #c62828;">${error.message}</pre>
+    </div>`
   );
 }
-return {executionOutput};
 }});
 
 </script>
@@ -234,7 +218,7 @@ return {executionOutput};
 <hr>
 <h2 id="interactive-code-editor-with-reactive-flow" tabindex="-1"><a class="observablehq-header-anchor" href="#interactive-code-editor-with-reactive-flow">⚡ Interactive Code Editor with Reactive Flow</a></h2>
 <p>Try the <strong>top-down reactive pattern</strong> — change the inputs below, edit the code in the middle, and see the output update automatically!</p>
-<h3 id="step-1-inputs-at-the-top" tabindex="-1"><a class="observablehq-header-anchor" href="#step-1-inputs-at-the-top">Step 1: Inputs (at the top)</a></h3>
+<h3 id="step-1-enter-your-name" tabindex="-1"><a class="observablehq-header-anchor" href="#step-1-enter-your-name">Step 1: Enter Your Name</a></h3>
 <div class="observablehq observablehq--block">
   <div class="observablehq--inspect observablehq--error">SyntaxError: Transform failed with 1 error:
 &lt;stdin&gt;:3:7: ERROR: Expected ";" but found "userName"</div>
@@ -246,6 +230,13 @@ viewof userName = <span class="hljs-title class_">Inputs</span>.<span class="hlj
   <span class="hljs-attr">value</span>: <span class="hljs-string">"Observer"</span>,
   <span class="hljs-attr">placeholder</span>: <span class="hljs-string">"Enter your name"</span>
 })
+</code></pre>
+<h3 id="step-2-choose-a-multiplier" tabindex="-1"><a class="observablehq-header-anchor" href="#step-2-choose-a-multiplier">Step 2: Choose a Multiplier</a></h3>
+<div class="observablehq observablehq--block">
+  <div class="observablehq--inspect observablehq--error">SyntaxError: Transform failed with 1 error:
+&lt;stdin&gt;:3:7: ERROR: Expected ";" but found "multiplier"</div>
+</div>
+<pre data-language="ts"><code class="language-ts"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> <span class="hljs-title class_">Inputs</span> <span class="hljs-keyword">from</span> <span class="hljs-string">"@observablehq/inputs"</span>;
 
 viewof multiplier = <span class="hljs-title class_">Inputs</span>.<span class="hljs-title function_">range</span>([<span class="hljs-number">1</span>, <span class="hljs-number">10</span>], {
   <span class="hljs-attr">label</span>: <span class="hljs-string">"🔢 Number Multiplier:"</span>,
@@ -253,7 +244,7 @@ viewof multiplier = <span class="hljs-title class_">Inputs</span>.<span class="h
   <span class="hljs-attr">step</span>: <span class="hljs-number">1</span>
 })
 </code></pre>
-<h3 id="step-2-editable-code-block-in-the-middle" tabindex="-1"><a class="observablehq-header-anchor" href="#step-2-editable-code-block-in-the-middle">Step 2: Editable Code Block (in the middle)</a></h3>
+<h3 id="step-3-edit-the-code" tabindex="-1"><a class="observablehq-header-anchor" href="#step-3-edit-the-code">Step 3: Edit the Code</a></h3>
 <div class="observablehq observablehq--block">
   <div class="observablehq--inspect observablehq--error">SyntaxError: Transform failed with 1 error:
 &lt;stdin&gt;:3:7: ERROR: Expected ";" but found "userCode"</div>
@@ -261,23 +252,23 @@ viewof multiplier = <span class="hljs-title class_">Inputs</span>.<span class="h
 <pre data-language="ts"><code class="language-ts"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> <span class="hljs-title class_">Inputs</span> <span class="hljs-keyword">from</span> <span class="hljs-string">"@observablehq/inputs"</span>;
 
 viewof userCode = <span class="hljs-title class_">Inputs</span>.<span class="hljs-title function_">textarea</span>({
-  <span class="hljs-attr">label</span>: <span class="hljs-string">"✏️ Edit and Execute Code:"</span>,
-  <span class="hljs-attr">value</span>: <span class="hljs-string">`// Edit this code! It can use userName and multiplier from above
+  <span class="hljs-attr">label</span>: <span class="hljs-string">"✏️ Edit and Execute Code (Shift+Enter):"</span>,
+  <span class="hljs-attr">value</span>: <span class="hljs-string">`// You can use 'userName' and 'multiplier' from above!
 const greeting = \`Hello, \${userName}!\`;
-const calculation = 5 * multiplier;
-const message = \`\${greeting} Your result is: \${calculation}\`;
-display(message);`</span>,
-  <span class="hljs-attr">rows</span>: <span class="hljs-number">10</span>
+const result = 5 * multiplier;
+display(\`\${greeting} Your result: \${result}\`);`</span>,
+  <span class="hljs-attr">rows</span>: <span class="hljs-number">8</span>
 })
 </code></pre>
-<h3 id="step-3-automatic-output-at-the-bottom" tabindex="-1"><a class="observablehq-header-anchor" href="#step-3-automatic-output-at-the-bottom">Step 3: Automatic Output (at the bottom)</a></h3>
-<div class="observablehq observablehq--block"><!--:88f8aed2:--></div>
+<h3 id="step-4-see-the-output" tabindex="-1"><a class="observablehq-header-anchor" href="#step-4-see-the-output">Step 4: See the Output</a></h3>
+<div class="observablehq observablehq--block"><!--:e94fa554:--></div>
 <h3 id="how-the-reactive-flow-works" tabindex="-1"><a class="observablehq-header-anchor" href="#how-the-reactive-flow-works">How the Reactive Flow Works:</a></h3>
 <ol>
-<li><strong>Top</strong> → User inputs (<code>userName</code>, <code>multiplier</code>) are defined</li>
-<li><strong>Middle</strong> → Editable code block references these inputs</li>
-<li><strong>Bottom</strong> → Output reads from both inputs and code, automatically updates</li>
-<li><strong>Change anything</strong> → The whole page re-evaluates top-to-bottom!</li>
+<li><strong>Input 1</strong> → Your name (at top)</li>
+<li><strong>Input 2</strong> → Number multiplier (below)</li>
+<li><strong>Code Editor</strong> → Edit code that uses the inputs</li>
+<li><strong>Output</strong> → Automatically runs your code and displays results</li>
+<li><strong>Change anything</strong> → The entire page re-evaluates from top to bottom!</li>
 </ol>
 <hr>
 <h2 id="next-steps" tabindex="-1"><a class="observablehq-header-anchor" href="#next-steps">🚀 Next Steps</a></h2>
@@ -298,7 +289,7 @@ display(message);`</span>,
 <p>Made with ❤️ using Observable Framework, TypeScript, and pnpm</p>
 </main>
 <footer id="observablehq-footer">
-<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2025-10-23T14:19:04">Oct 23, 2025</a>.</div>
+<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2025-10-23T14:22:04">Oct 23, 2025</a>.</div>
 </footer>
 </div>
 </body>
