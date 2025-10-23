@@ -1,12 +1,13 @@
 // Adapted from @cmudig/editor for Observable Framework
 // Original: https://observablehq.com/@cmudig/editor
 
-import { CodeJar, withLineNumbers } from "../../_node/codejar@3.7.0/index.356d966d.js";
+import { CodeJar } from "../../_node/codejar@3.7.0/index.356d966d.js";
 import hljs from "../../_node/highlight.js@10.7.3/index.3de74535.js";
 import debounce from "../../_node/lodash.debounce@4.0.8/index.35efac82.js";
 
 export const createEditor = () => {
   const highlightjs = hljs;
+
 
   const defaultStyles = `
     border: 1px solid #eee;
@@ -109,11 +110,7 @@ export const createEditor = () => {
     container.appendChild(ed);
     container.value = value;
 
-    const jar = CodeJar(
-      ed,
-      lineNumbers ? withLineNumbers(highlight, { color: '#fff' }) : highlight,
-      codeJarOpts
-    );
+    const jar = CodeJar(ed, highlight, codeJarOpts);
 
     let settingInternally = false;
 
@@ -129,16 +126,6 @@ export const createEditor = () => {
         settingInternally = false;
       }
     });
-
-    if (lineNumbers) {
-      const lineNumberContainer = container.querySelector('.codejar-linenumbers');
-      if (lineNumberContainer) {
-        lineNumberContainer.style.textAlign = 'center';
-        lineNumberContainer.style.fontFamily = 'monospace';
-        lineNumberContainer.style.paddingTop = '10px';
-        lineNumberContainer.style.fontSize = '13px';
-      }
-    }
 
     ed.addEventListener('input', (e) => {
       e.stopPropagation();

@@ -15,7 +15,7 @@
 <link rel="modulepreload" href="./_observablehq/stdlib.eabb1795.js">
 <link rel="modulepreload" href="./_node/@observablehq/plot@0.6.17/index.d66b1832.js">
 <link rel="modulepreload" href="./_node/@observablehq/inputs@0.12.0/index.4eed0a6e.js">
-<link rel="modulepreload" href="./_import/lib/editor.18092238.js">
+<link rel="modulepreload" href="./_import/lib/editor.d7bc7c97.js">
 <link rel="modulepreload" href="./_npm/htl@0.3.1/72f4716c.js">
 <link rel="modulepreload" href="./_node/codejar@3.7.0/index.356d966d.js">
 <link rel="modulepreload" href="./_node/highlight.js@10.7.3/index.3de74535.js">
@@ -164,12 +164,11 @@ const multiplier = view(Inputs.range([1, 10], {
 return {Inputs,multiplier};
 }});
 
-define({id: "ca955fae", inputs: ["view"], outputs: ["createEditor","Editor","userCode"], body: async (view) => {
-const {createEditor} = await import("./_import/lib/editor.18092238.js");
+define({id: "2f4ba1e2", inputs: ["view"], outputs: ["createEditor","Editor","userCode"], body: async (view) => {
+const {createEditor} = await import("./_import/lib/editor.d7bc7c97.js");
 const Editor = createEditor();
 const userCode = view(Editor({
   language: "javascript",
-  lineNumbers: true,
   instant: true,
   value: `// You can use 'userName' and 'multiplier' from above!
 const greeting = \`Hello, \${userName}!\`;
@@ -258,13 +257,13 @@ try {
 <div class="observablehq observablehq--block"><!--:5c1f85a5:--></div>
 <hr>
 <h2 id="interactive-code-editor-with-reactive-flow" tabindex="-1"><a class="observablehq-header-anchor" href="#interactive-code-editor-with-reactive-flow">⚡ Interactive Code Editor with Reactive Flow</a></h2>
-<p>Try the <strong>top-down reactive pattern</strong> — change the inputs below, edit the code in the middle, and see the output update automatically!</p>
+<p>Try the <strong>top-down reactive pattern</strong> — change the inputs below, edit the code in the middle with syntax highlighting, and see the output update automatically!</p>
 <h3 id="step-1-enter-your-name" tabindex="-1"><a class="observablehq-header-anchor" href="#step-1-enter-your-name">Step 1: Enter Your Name</a></h3>
 <div class="observablehq observablehq--block"><!--:a250d05e:--></div>
 <h3 id="step-2-choose-a-multiplier" tabindex="-1"><a class="observablehq-header-anchor" href="#step-2-choose-a-multiplier">Step 2: Choose a Multiplier</a></h3>
 <div class="observablehq observablehq--block"><!--:347e5154:--></div>
 <h3 id="step-3-edit-the-code" tabindex="-1"><a class="observablehq-header-anchor" href="#step-3-edit-the-code">Step 3: Edit the Code</a></h3>
-<div class="observablehq observablehq--block"><!--:ca955fae:--></div>
+<div class="observablehq observablehq--block"><!--:2f4ba1e2:--></div>
 <h3 id="step-4-see-the-output" tabindex="-1"><a class="observablehq-header-anchor" href="#step-4-see-the-output">Step 4: See the Output</a></h3>
 <div class="observablehq observablehq--block"><!--:e94fa554:--></div>
 <h3 id="how-the-reactive-flow-works" tabindex="-1"><a class="observablehq-header-anchor" href="#how-the-reactive-flow-works">How the Reactive Flow Works:</a></h3>
@@ -294,7 +293,7 @@ try {
 <p>Made with ❤️ using Observable Framework, TypeScript, and pnpm</p>
 </main>
 <footer id="observablehq-footer">
-<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2025-10-23T15:13:31">Oct 23, 2025</a>.</div>
+<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2025-10-23T15:17:05">Oct 23, 2025</a>.</div>
 </footer>
 </div>
 </body>
