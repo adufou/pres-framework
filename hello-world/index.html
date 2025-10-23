@@ -14,10 +14,12 @@
 <link rel="modulepreload" href="./_observablehq/runtime.e080113b.js">
 <link rel="modulepreload" href="./_observablehq/stdlib.eabb1795.js">
 <link rel="modulepreload" href="./_node/@observablehq/plot@0.6.17/index.d66b1832.js">
+<link rel="modulepreload" href="./_node/@observablehq/inputs@0.12.0/index.4eed0a6e.js">
 <link rel="modulepreload" href="./_npm/htl@0.3.1/72f4716c.js">
 <link rel="modulepreload" href="./_node/d3@7.9.0/index.8946009e.js">
 <link rel="modulepreload" href="./_node/isoformat@0.2.1/index.0882e9d9.js">
 <link rel="modulepreload" href="./_node/interval-tree-1d@1.0.4/index.eeaa354d.js">
+<link rel="modulepreload" href="./_node/htl@0.3.1/index.0caf36e7.js">
 <link rel="modulepreload" href="./_node/d3-array@3.2.4/index.f89e3560.js">
 <link rel="modulepreload" href="./_node/d3-axis@3.0.0/index.34ded868.js">
 <link rel="modulepreload" href="./_node/d3-brush@3.0.0/index.76e53644.js">
@@ -138,6 +140,39 @@ display(
 return {Plot,scatterData};
 }});
 
+define({id: "a250d05e", inputs: ["view"], outputs: ["Inputs","userName"], body: async (view) => {
+const Inputs = await import("./_node/@observablehq/inputs@0.12.0/index.4eed0a6e.js");
+const userName = view(Inputs.text({
+  label: "\u{1F464} Your Name:",
+  value: "Observer",
+  placeholder: "Enter your name"
+}));
+return {Inputs,userName};
+}});
+
+define({id: "347e5154", inputs: ["view"], outputs: ["Inputs","multiplier"], body: async (view) => {
+const Inputs = await import("./_node/@observablehq/inputs@0.12.0/index.4eed0a6e.js");
+const multiplier = view(Inputs.range([1, 10], {
+  label: "\u{1F522} Number Multiplier:",
+  value: 3,
+  step: 1
+}));
+return {Inputs,multiplier};
+}});
+
+define({id: "52ac3290", inputs: ["view"], outputs: ["Inputs","userCode"], body: async (view) => {
+const Inputs = await import("./_node/@observablehq/inputs@0.12.0/index.4eed0a6e.js");
+const userCode = view(Inputs.textarea({
+  label: "\u270F\uFE0F Edit and Execute Code (Shift+Enter):",
+  value: `// You can use 'userName' and 'multiplier' from above!
+const greeting = \`Hello, \${userName}!\`;
+const result = 5 * multiplier;
+display(\`\${greeting} Your result: \${result}\`);`,
+  rows: 8
+}));
+return {Inputs,userCode};
+}});
+
 define({id: "e94fa554", inputs: ["display","html","userName","multiplier","userCode"], body: (display,html,userName,multiplier,userCode) => {
 display(html`<strong>Inputs available to your code:</strong>`);
 display(html`<ul>
@@ -219,47 +254,11 @@ try {
 <h2 id="interactive-code-editor-with-reactive-flow" tabindex="-1"><a class="observablehq-header-anchor" href="#interactive-code-editor-with-reactive-flow">⚡ Interactive Code Editor with Reactive Flow</a></h2>
 <p>Try the <strong>top-down reactive pattern</strong> — change the inputs below, edit the code in the middle, and see the output update automatically!</p>
 <h3 id="step-1-enter-your-name" tabindex="-1"><a class="observablehq-header-anchor" href="#step-1-enter-your-name">Step 1: Enter Your Name</a></h3>
-<div class="observablehq observablehq--block">
-  <div class="observablehq--inspect observablehq--error">SyntaxError: Transform failed with 1 error:
-&lt;stdin&gt;:3:7: ERROR: Expected ";" but found "userName"</div>
-</div>
-<pre data-language="ts"><code class="language-ts"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> <span class="hljs-title class_">Inputs</span> <span class="hljs-keyword">from</span> <span class="hljs-string">"@observablehq/inputs"</span>;
-
-viewof userName = <span class="hljs-title class_">Inputs</span>.<span class="hljs-title function_">text</span>({
-  <span class="hljs-attr">label</span>: <span class="hljs-string">"👤 Your Name:"</span>,
-  <span class="hljs-attr">value</span>: <span class="hljs-string">"Observer"</span>,
-  <span class="hljs-attr">placeholder</span>: <span class="hljs-string">"Enter your name"</span>
-})
-</code></pre>
+<div class="observablehq observablehq--block"><!--:a250d05e:--></div>
 <h3 id="step-2-choose-a-multiplier" tabindex="-1"><a class="observablehq-header-anchor" href="#step-2-choose-a-multiplier">Step 2: Choose a Multiplier</a></h3>
-<div class="observablehq observablehq--block">
-  <div class="observablehq--inspect observablehq--error">SyntaxError: Transform failed with 1 error:
-&lt;stdin&gt;:3:7: ERROR: Expected ";" but found "multiplier"</div>
-</div>
-<pre data-language="ts"><code class="language-ts"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> <span class="hljs-title class_">Inputs</span> <span class="hljs-keyword">from</span> <span class="hljs-string">"@observablehq/inputs"</span>;
-
-viewof multiplier = <span class="hljs-title class_">Inputs</span>.<span class="hljs-title function_">range</span>([<span class="hljs-number">1</span>, <span class="hljs-number">10</span>], {
-  <span class="hljs-attr">label</span>: <span class="hljs-string">"🔢 Number Multiplier:"</span>,
-  <span class="hljs-attr">value</span>: <span class="hljs-number">3</span>,
-  <span class="hljs-attr">step</span>: <span class="hljs-number">1</span>
-})
-</code></pre>
+<div class="observablehq observablehq--block"><!--:347e5154:--></div>
 <h3 id="step-3-edit-the-code" tabindex="-1"><a class="observablehq-header-anchor" href="#step-3-edit-the-code">Step 3: Edit the Code</a></h3>
-<div class="observablehq observablehq--block">
-  <div class="observablehq--inspect observablehq--error">SyntaxError: Transform failed with 1 error:
-&lt;stdin&gt;:3:7: ERROR: Expected ";" but found "userCode"</div>
-</div>
-<pre data-language="ts"><code class="language-ts"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> <span class="hljs-title class_">Inputs</span> <span class="hljs-keyword">from</span> <span class="hljs-string">"@observablehq/inputs"</span>;
-
-viewof userCode = <span class="hljs-title class_">Inputs</span>.<span class="hljs-title function_">textarea</span>({
-  <span class="hljs-attr">label</span>: <span class="hljs-string">"✏️ Edit and Execute Code (Shift+Enter):"</span>,
-  <span class="hljs-attr">value</span>: <span class="hljs-string">`// You can use 'userName' and 'multiplier' from above!
-const greeting = \`Hello, \${userName}!\`;
-const result = 5 * multiplier;
-display(\`\${greeting} Your result: \${result}\`);`</span>,
-  <span class="hljs-attr">rows</span>: <span class="hljs-number">8</span>
-})
-</code></pre>
+<div class="observablehq observablehq--block"><!--:52ac3290:--></div>
 <h3 id="step-4-see-the-output" tabindex="-1"><a class="observablehq-header-anchor" href="#step-4-see-the-output">Step 4: See the Output</a></h3>
 <div class="observablehq observablehq--block"><!--:e94fa554:--></div>
 <h3 id="how-the-reactive-flow-works" tabindex="-1"><a class="observablehq-header-anchor" href="#how-the-reactive-flow-works">How the Reactive Flow Works:</a></h3>
@@ -289,7 +288,7 @@ display(\`\${greeting} Your result: \${result}\`);`</span>,
 <p>Made with ❤️ using Observable Framework, TypeScript, and pnpm</p>
 </main>
 <footer id="observablehq-footer">
-<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2025-10-23T14:22:04">Oct 23, 2025</a>.</div>
+<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2025-10-23T14:25:12">Oct 23, 2025</a>.</div>
 </footer>
 </div>
 </body>
