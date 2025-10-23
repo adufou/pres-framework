@@ -2,6 +2,8 @@
 title: "Hello World – TS Demo"
 ---
 
+[← Back to Home](../../)
+
 # 🎉 Hello World – Observable Framework + TypeScript
 
 Welcome to this demonstration of **Observable Framework** with **TypeScript**! This presentation showcases interactive code, visualizations, and the power of combining Markdown with executable TypeScript.
