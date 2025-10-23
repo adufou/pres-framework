@@ -136,7 +136,7 @@ display(
 
 ## ⚡ Interactive Code Editor with Reactive Flow
 
-Try the **top-down reactive pattern** — change the inputs below, edit the code in the middle, and see the output update automatically!
+Try the **top-down reactive pattern** — change the inputs below, edit the code in the middle with syntax highlighting, and see the output update automatically!
 
 ### Step 1: Enter Your Name
 
@@ -171,7 +171,6 @@ const Editor = createEditor();
 
 const userCode = view(Editor({
   language: 'javascript',
-  lineNumbers: true,
   instant: true,
   value: `// You can use 'userName' and 'multiplier' from above!
 const greeting = \`Hello, \${userName}!\`;
