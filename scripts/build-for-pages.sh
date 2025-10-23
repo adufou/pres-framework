@@ -28,6 +28,9 @@ for pres_dir in presentations/*/; do
     cd ../..
 done
 
+# Copy .nojekyll to disable Jekyll processing on GitHub Pages
+cp .nojekyll docs/
+
 echo "✅ Build complete! All projects ready in docs/"
 echo "📂 docs/"
 ls -la docs/
